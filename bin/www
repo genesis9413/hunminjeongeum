@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('hunminjeongeum:server');
 var http = require('http');
-
+var socket_module= require('../routes/socket');
 /**
  * Get port from environment and store in Express.
  */
@@ -28,6 +28,14 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Socket IO Server
+ */
+
+var io = require('socket.io')(server);
+
+io.on('connection',socket_module.socket);
 
 /**
  * Normalize a port into a number, string, or false.
