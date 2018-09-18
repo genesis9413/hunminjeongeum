@@ -3,23 +3,31 @@
 /**
  * Module dependencies.
  */
-
+var fs = require('fs');
 var app = require('../app');
 var debug = require('debug')('hunminjeongeum:server');
 var http = require('http');
+var https = require('https');
 var socket_module= require('../routes/socket');
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+// var port = normalizePort(process.env.PORT || '443');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+// var options = {
+//   key: fs.readFileSync(''),
+//   cert: fs.readFileSync('')
+// };
+
+// var server = http.createServer(app);
+var server = https.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.
