@@ -16,6 +16,8 @@ const assistant = new watson({
 
 const auth = require('../controller/auth');
 
+let path = require('path');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.json({
@@ -60,6 +62,8 @@ router.post('/tt',passport.authenticate('jwt',{session:false}),(req,res)=>{
     console.log(req.body);
     console.log(req.user);
 });
+// router.get('/testest',(req,res)=>{
+// });
 
 
 module.exports = router;
